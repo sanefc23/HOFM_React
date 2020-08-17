@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
@@ -10,8 +11,8 @@ import CartIcon from '../CartIcon/CartIcon';
 
 function CustomNavbar() {
     const genres = ['Pop', 'Rock', 'Latino', 'EDM', 'Música Clásica', 'Floklore', 'Hip Hop', 'Alternativo', 'Jazz', 'Metal', 'Reggae', 'Reggaeton', 'R&B', 'Rap']
+    const [cartCounter, setCartCounter] = useState(null);
     return (
-
         <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark">
             <Navbar.Brand href="#home"><img className="logo" alt="brand" src="./images/logo2.png" /></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -31,7 +32,7 @@ function CustomNavbar() {
                 <Nav>
                     <div className="rightGroup">
                         <Nav.Link href="/"><img className="altLinkLogo" alt="user" src="./images/user.png" aria-hidden="true" /></Nav.Link>
-                        <CartIcon></CartIcon>
+                        <CartIcon cartCounter={setCartCounter()}></CartIcon>
                     </div>
                 </Nav>
             </Navbar.Collapse>

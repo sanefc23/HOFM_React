@@ -9,9 +9,6 @@ function ItemCount(props) {
     debe invocar el callback de onAdd(count) pasando el count del counter */
     let [counter, setCounter] = useState(props.initial);
 
-    function onAdd(count) {
-    }
-
     function increment(event) {
         counter = counter + 1;
         setCounter(counter);
@@ -24,6 +21,9 @@ function ItemCount(props) {
         console.log(counter);
     }
 
+    function onAdd(counter) {
+    }
+
     return (
         <React.Fragment>
             <div className="itemCountSelector">
@@ -31,7 +31,7 @@ function ItemCount(props) {
                 <p className="counter">{counter}</p>
                 <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "white" }} ></i></button>
             </div>
-            <button className="addToCartBtn">Agregar al carrito</button>
+            <button className="addToCartBtn" onClick={onAdd}>Agregar al carrito</button>
         </React.Fragment>
     );
 }
