@@ -6,12 +6,12 @@ import Home from './components/Home/Home';
 
 function App() {
   return (
-    <React.Fragment>
+    <>
       <CustomNavbar></CustomNavbar>
       <Home
         greeting="Bienvenido a House of Music"
       />
-    </React.Fragment>
+    </>
   );
 }
 
