@@ -11,9 +11,9 @@ function Home(props) {
             </Jumbotron>
             <br />
             <ItemCount
-                initial={1}
+                initial={5}
                 min={1}
-                max="9"
+                max={10}
                 onAdd=""
             ></ItemCount>
         </div >

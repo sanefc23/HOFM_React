@@ -7,28 +7,29 @@ function ItemCount(props) {
     que tenga un botón y controles para incrementar (+) y decrementar (-) el
     count inicial pero nunca irse de los límites min/max. Al clickear el botón
     debe invocar el callback de onAdd(count) pasando el count del counter */
-    let [counter, setCounter] = useState(null);
+    let [counter, setCounter] = useState(props.initial);
 
     function onAdd(count) {
     }
 
     function increment(event) {
-        counter = props.initial;
-        setCounter(counter++);
+        counter = counter + 1;
+        setCounter(counter);
+        console.log(counter);
     }
 
     function decrement(event) {
-        console.log('---');
-        setCounter(counter--);
+        counter = counter - 1;
+        setCounter(counter);
         console.log(counter);
     }
 
     return (
         <React.Fragment>
             <div className="itemCountSelector">
-                <button className="counterBtn" onClick={decrement}><i className="fas fa-minus" style={{ color: "white" }}></i></button>
-                <p className="counter">{props.initial}</p>
-                <button className="counterBtn" onClick={increment}><i className="fas fa-plus" style={{ color: "white" }} ></i></button>
+                <button className="counterBtn" disabled={counter <= props.min} onClick={decrement}><i className="fas fa-minus" style={{ color: "white" }}></i></button>
+                <p className="counter">{counter}</p>
+                <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "white" }} ></i></button>
             </div>
             <button className="addToCartBtn">Agregar al carrito</button>
         </React.Fragment>
