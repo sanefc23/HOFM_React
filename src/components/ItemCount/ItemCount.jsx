@@ -10,18 +10,11 @@ function ItemCount(props) {
     let [counter, setCounter] = useState(props.initial);
 
     function increment(event) {
-        counter = counter + 1;
-        setCounter(counter);
-        console.log(counter);
+        setCounter(counter + 1);
     }
 
     function decrement(event) {
-        counter = counter - 1;
-        setCounter(counter);
-        console.log(counter);
-    }
-
-    function onAdd(counter) {
+        setCounter(counter - 1);
     }
 
     return (
@@ -31,7 +24,7 @@ function ItemCount(props) {
                 <p className="counter">{counter}</p>
                 <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "white" }} ></i></button>
             </div>
-            <button className="addToCartBtn" onClick={onAdd}>Agregar al carrito</button>
+            <button className="addToCartBtn" onClick={props.onAdd}>Agregar al carrito</button>
         </React.Fragment>
     );
 }

@@ -14,7 +14,7 @@ function Home(props) {
                 initial={2}
                 min={1}
                 max={10}
-                onAdd=""
+                onAdd={(count)=> console.log('Añadido al carrito!')}
             ></ItemCount>
         </div >
     );
