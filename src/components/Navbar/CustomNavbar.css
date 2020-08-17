@@ -1,0 +1,32 @@
+.navBkg{
+    background-color: rgba(0,0,0, .7) !important;
+}
+
+.logo{
+    height: 6vh;
+    margin-right: 2em;
+}
+
+.links{
+    margin-right: 2em;
+    color: white !important;
+}
+
+.rightGroup{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.altLinkLogo{
+    height: 5vh;
+    margin-right: 2em;
+}
+
+.cartCounterBadge {
+    border-radius: 50%;
+    margin: 0 auto;
+    width: 26px;
+    height: 26px;
+    background-color: rgba(0, 190, 159, 0.85);
+}

@@ -1,0 +1,46 @@
+.itemCountSelector{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 12vw;
+    height: 3vw;
+    background-color: rgba(255,255,255, 0.3);
+    border-radius: 20px 20px 0 0;
+}
+
+.addToCartBtn{
+    width: 12vw;
+    height: 3vw;
+    background-color: rgba(0, 190, 159, 0.85);
+    border-style: none;
+    border: none;
+    border-radius: 0 0 20px 20px;
+    color: white;
+}
+
+.addToCartBtn:hover {
+    background-color: rgb(0, 190, 158);
+    border: none;
+}
+
+.counter{
+    color: white;
+    font-weight: bold;
+    font-size: 1.4rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.counterBtn{
+    background-color: transparent;
+    border-style: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    margin: 1em;
+}
+
+.counterBtn:hover{
+   background-color: rgba(0, 0, 0, 0.3);
+}
