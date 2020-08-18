@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
-import ItemCount from '../ItemCount/ItemCount';
+import ItemList from '../ItemList/ItemList';
 
 function Home(props) {
     return (
@@ -9,13 +9,7 @@ function Home(props) {
             <Jumbotron className="welcomeJumbotron">
                 <h1>{props.greeting}</h1>
             </Jumbotron>
-            <br />
-            <ItemCount
-                initial={2}
-                min={1}
-                max={10}
-                onAdd={(count)=> console.log('Añadido al carrito!')}
-            ></ItemCount>
+            <ItemList />
         </div >
     );
 }

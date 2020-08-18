@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import React, { useState } from 'react';
 import './ItemCount.css';
 
 function ItemCount(props) {
@@ -13,14 +13,14 @@ function ItemCount(props) {
     }
 
     return (
-        <>
+        <div className="shape">
             <div className="itemCountSelector">
-                <button className="counterBtn" disabled={counter <= props.min} onClick={decrement}><i className="fas fa-minus" style={{ color: "white" }}></i></button>
+                <button className="counterBtn" disabled={counter <= props.min} onClick={decrement}><i className="fas fa-minus" style={{ color: "rgb(30,30,30)" }}></i></button>
                 <p className="counter">{counter}</p>
-                <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "white" }} ></i></button>
+                <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "rgb(30,30,30)" }} ></i></button>
             </div>
-            <button className="addToCartBtn" onClick={props.onAdd}>Agregar al carrito</button>
-        </>
+            <button className="addToCartBtn" onClick={props.onAdd}><img className="cart" alt="cart" src="./images/cart_dark.png" aria-hidden="true" /></button>
+        </div>
     );
 }
 

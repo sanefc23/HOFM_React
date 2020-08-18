@@ -1,0 +1,11 @@
+.wrapper {
+    display: inline-flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0em 0.5em;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-y: hidden;
+}

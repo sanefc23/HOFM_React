@@ -1,0 +1,45 @@
+.product {
+    margin: 0.8em;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    transition: transform .2s;
+}
+
+.product:hover{
+    transform: scale(1.04);
+}
+
+.bkg{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 14vw;
+    padding-top: 0.8em;
+    background-color: rgba(255,255,255, 0.6);
+    border-radius: 0 0 6px 6px;
+}
+
+.albumCover{
+    width: 14vw;
+    border-radius: 6px 6px 0 0;
+}
+
+.artist,
+.album {
+    font-size: 2vh;
+    margin-bottom: 6px;
+    width: 14vw;
+    color: rgb(30,30,30);
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.artist {
+    font-size: 2.4vh;
+    font-weight: bold;
+}
