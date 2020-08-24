@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './Home.css';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import ItemList from '../ItemList/ItemList';
+import Spinner from '../Spinner/Spinner';
 
 const albums =
     [
@@ -119,10 +120,18 @@ function getFromRemote() {
     })
 }
 
+
+
 function Home(props) {
     const [albums, setAlbums] = useState([]);
+    const [loading, setLoading] = useState(false);
+
+    function hideSpinner() {
+        return setLoading(true);
+    }
+
     useEffect(() => {
-        getFromRemote().then(setAlbums)
+        getFromRemote().then(setAlbums).then(hideSpinner);
     }, []);
     return (
         <div className="containerFrame">
@@ -130,8 +139,10 @@ function Home(props) {
                 <h2>{props.greeting}</h2>
             </Jumbotron>
             <h1 className="sliderTitle">Novedades</h1>
+            <Spinner loading={loading}></Spinner>
             <ItemList products={albums} />
             <h1 className="sliderTitle">Best Sellers</h1>
+            <Spinner loading={loading}></Spinner>
             <ItemList products={albums} />
         </div >
     );
