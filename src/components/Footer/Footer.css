@@ -1,0 +1,20 @@
+.my-footer {
+  width: 100%;
+  margin-top: 1em;
+  color: white;
+  background-color: rgba(0,0,0, .3);
+  height: 8vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text{
+  margin: 0;
+}
+
+.social-media-icon{
+  height: 4vh;
+  margin: 1em;
+}

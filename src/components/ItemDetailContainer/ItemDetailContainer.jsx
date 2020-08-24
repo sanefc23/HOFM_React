@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css';
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import ItemList from '../ItemList/ItemList';
+import './ItemDetailContainer.css';
+import ItemCount from '../ItemCount/ItemCount';
+import { useParams } from 'react-router-dom';
 
 const albums =
     [
@@ -111,30 +111,78 @@ const albums =
         },
     ];
 
-function getFromRemote() {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res(albums)
-        }, 2000)
-    })
-}
+function ItemDetailContainer() {
+    const { id } = useParams();
+    const getItem = (id) => {
+        const product = albums.find(album => album.id === parseInt(id, 10));
+        return product;
+    }
 
-function Home(props) {
-    const [albums, setAlbums] = useState([]);
+    const [album, setAlbum] = useState({});
     useEffect(() => {
-        getFromRemote().then(setAlbums)
-    }, []);
+        const current = getItem(id);
+        setAlbum(current);
+        return () => {
+            console.log('ItemDetail DISMOUNTED')
+        }
+    }, [id, album]);
+
     return (
-        <div className="containerFrame">
-            <Jumbotron className="welcomeJumbotron">
-                <h2>{props.greeting}</h2>
-            </Jumbotron>
-            <h1 className="sliderTitle">Novedades</h1>
-            <ItemList products={albums} />
-            <h1 className="sliderTitle">Best Sellers</h1>
-            <ItemList products={albums} />
-        </div >
+        <div className="detail-frame">
+            <div className="detail-child-frame1">
+                <div>
+                    <h1 className="detail-title">{album.title} - {album.artist}</h1>
+                    <h5>Género: {album.genre}</h5>
+                    <p className="detail-description">
+                        {album.description}
+                    </p>
+                </div>
+                <div className="detail-row-mini-cards">
+                    <div id="valoracion" className="detail-info-mini-cards">
+                        <label className="detail-info">
+                            {
+                                [...Array(album.rating)].map((e, i) => <i className="fas fa-star" key={i} />)
+                            }
+                        </label>
+                    </div>
+                    <div id="formatos" style={{ textTransform: 'uppercase' }} className="detail-info-mini-cards">
+                        <label className="detail-info">{album.format}</label>
+                    </div>
+                    <div id="price" className="detail-info-mini-cards">
+                        <label className="detail-info">${album.price}</label>
+                    </div>
+                    {/* <form action={"/products/" + album.id} method="POST">
+                        <button className="detail-addToCartButton" name="item" value="{  album.id }"> */}
+                    <div id="addToCart" className="detail-info-mini-cards">
+                        <ItemCount
+                            initial={2}
+                            min={1}
+                            max={10}
+                            onAdd={(count) => console.log('Añadido al carrito!')}
+                        ></ItemCount>
+                    </div>
+                    {/* </button>
+                    </form> */}
+                </div>
+                <div className="detail-row-mini-cards">
+                    <img className="detail-album-cover" src={`${process.env.PUBLIC_URL}/images/albums/${album.frontCover}`} alt="" />
+                    <img className="detail-album-cover" src={`${process.env.PUBLIC_URL}/images/albums/${album.backCover}`} alt="" />
+                </div>
+            </div>
+
+            <div className="detail-child-frame2">
+                <ol className="detail-tracklist">
+                    <h3 className="detail-title">Tracklist</h3>
+                    <br />
+                    <h5>No disponible</h5>
+                    {/* {
+                        album.tracklist !== [] ?
+                            album.tracklist.map(song => <li>{song}</li>) : 
+                    } */}
+                </ol>
+            </div>
+        </div>
     );
 }
 
-export default Home;
+export default ItemDetailContainer;

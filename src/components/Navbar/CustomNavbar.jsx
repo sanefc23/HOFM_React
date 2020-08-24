@@ -14,13 +14,13 @@ function CustomNavbar() {
     //const [cartCounter, setCartCounter] = useState(null);
     return (
         <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark">
-            <Navbar.Brand href="#home"><img className="logo" alt="brand" src="./images/logo2.png" /></Navbar.Brand>
+            <Navbar.Brand href="/"><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo2.png"} /></Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                    <Nav.Link className="links" href="/">CD</Nav.Link>
-                    <Nav.Link className="links" href="/">DVD</Nav.Link>
-                    <Nav.Link className="links" href="/">Vinilos</Nav.Link>
+                    <Nav.Link className="links" href="/products/cd">CD</Nav.Link>
+                    <Nav.Link className="links" href="/products/dvd">DVD</Nav.Link>
+                    <Nav.Link className="links" href="/products/vinilos">Vinilos</Nav.Link>
                     <NavDropdown className="links" title="Géneros" id="collasible-nav-dropdown">
                         {genres.map((oneGenre, key) => <NavDropdown.Item key={key} href="#action/3.1">{oneGenre}</NavDropdown.Item>)}
                     </NavDropdown>
@@ -31,7 +31,7 @@ function CustomNavbar() {
                 </Nav>
                 <Nav>
                     <div className="rightGroup">
-                        <Nav.Link href="/"><img className="altLinkLogo" alt="user" src="./images/user.png" aria-hidden="true" /></Nav.Link>
+                        <Nav.Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Nav.Link>
                         <CartIcon cartCounter={1}></CartIcon>
                     </div>
                 </Nav>

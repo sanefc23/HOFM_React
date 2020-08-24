@@ -1,26 +1,22 @@
 import React from 'react';
 import './Item.css';
-import ItemCount from '../ItemCount/ItemCount'
+import { Link } from 'react-router-dom';
 
 function Item(props) {
+    function toDetail(id) {
+        console.log('going to detail id = ' + id);
+    }
+
     return (
-        <>
-            <section className="product">
-                <a href="/">
-                    <img className="albumCover" src={props.frontCover} alt={props.album} />
-                </a>
+        <Link to={`/products/${props.id}`} style={{ textDecoration: 'none' }}>
+            <section className="product" onClick={() => toDetail(props.id)}>
+                <img className="albumCover" src={props.frontCover} alt={props.album} />
                 <div className="bkg">
                     <h5 className="artist">{props.artist}</h5>
                     <h5 className="album">{props.title}</h5>
-                    <ItemCount
-                        initial={2}
-                        min={1}
-                        max={10}
-                        onAdd={(count) => console.log('Añadido al carrito!')}
-                    ></ItemCount>
                 </div>
             </section>
-        </>
+        </ Link>
     );
 }
 

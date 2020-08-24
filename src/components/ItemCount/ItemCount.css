@@ -11,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     height: 46px;
-    width: 75%;
+    width: 70%;
 }
 
 .addToCartBtn{
@@ -30,8 +30,7 @@
 
 .counter{
     color: rgb(30,30,30);
-    font-weight: bold;
-    font-size: 1.2rem;
+    font-size:  1.5vw;
     margin: 0 auto;
     text-align: center;
 }
@@ -39,10 +38,10 @@
 .counterBtn{
     background-color: transparent;
     border-style: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 18px;
-    margin: 1em;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin: 0.5em;
 }
 
 .counterBtn:hover, .addToCartBtn:hover{

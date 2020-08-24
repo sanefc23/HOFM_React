@@ -10,7 +10,7 @@ function CartIcon(props) {
                     {props.cartCounter}
                 </h6>
             </div>
-            <Nav.Link href="/"><img className="linkLogo" alt="cart" src="./images/cart.png" aria-hidden="true" /></Nav.Link>
+            <Nav.Link href="/cart"><img className="linkLogo" alt="cart" src={process.env.PUBLIC_URL + "/images/cart.png"} aria-hidden="true" /></Nav.Link>
         </>
     );
 }

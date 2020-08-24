@@ -2,8 +2,6 @@ import React from 'react';
 import './ItemList.css';
 import Item from '../Item/Item';
 
-
-
 function ItemList({ products }) {
     return (
         <div className="wrapper">
@@ -14,8 +12,8 @@ function ItemList({ products }) {
                         id={album.id}
                         artist={album.artist}
                         title={album.title}
-                        frontCover={'./images/albums/' + album.frontCover}
-                        backCover={'./images/albums/' + album.backCover}
+                        frontCover={process.env.PUBLIC_URL + "/images/albums/" + album.frontCover}
+                        backCover={process.env.PUBLIC_URL + "/images/albums/" + album.backCover}
                     />
                 )
             }
