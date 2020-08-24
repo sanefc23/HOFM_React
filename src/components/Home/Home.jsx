@@ -138,11 +138,10 @@ function Home(props) {
             <Jumbotron className="welcomeJumbotron">
                 <h2>{props.greeting}</h2>
             </Jumbotron>
-            <h1 className="sliderTitle">Novedades</h1>
             <Spinner loading={loading}></Spinner>
+            <h1 className="sliderTitle">Novedades</h1>
             <ItemList products={albums} />
             <h1 className="sliderTitle">Best Sellers</h1>
-            <Spinner loading={loading}></Spinner>
             <ItemList products={albums} />
         </div >
     );

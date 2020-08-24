@@ -164,7 +164,7 @@ function ItemDetailContainer() {
                         <button className="detail-addToCartButton" name="item" value="{  album.id }"> */}
                         <div id="addToCart" className="detail-info-mini-cards">
                             <ItemCount
-                                initial={2}
+                                initial={1}
                                 min={1}
                                 max={10}
                                 onAdd={(count) => console.log('Añadido al carrito!')}
