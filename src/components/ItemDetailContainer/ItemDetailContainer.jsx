@@ -30,12 +30,11 @@ function ItemDetailContainer() {
     return (
         <>
             <div className="detail-frame">
-                <Spinner loading={loading}></Spinner>
+                <Spinner loading={loading} />
                 <ItemDetail
                     loading={loading}
                     album={album}
-                >
-                </ItemDetail>
+                />
             </div>
         </>
     );

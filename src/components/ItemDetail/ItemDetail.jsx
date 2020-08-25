@@ -27,18 +27,14 @@ function ItemDetail(props) {
                     <div id="price" className="detail-info-mini-cards">
                         <label className="detail-info">${props.album.price}</label>
                     </div>
-                    {/* <form action={"/products/" + album.id} method="POST">
-    <button className="detail-addToCartButton" name="item" value="{  album.id }"> */}
                     <div id="addToCart" className="detail-info-mini-cards">
                         <ItemCount
                             initial={1}
                             min={1}
                             max={10}
                             onAdd={(count) => console.log('Añadido al carrito!')}
-                        ></ItemCount>
+                        />
                     </div>
-                    {/* </button>
-</form> */}
                 </div>
                 <div className="detail-row-mini-cards">
                     <img className="detail-album-cover" src={`${process.env.PUBLIC_URL}/images/albums/${props.album.frontCover}`} alt="" />
