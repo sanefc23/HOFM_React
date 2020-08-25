@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './ItemCount.css';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 function ItemCount(props) {
     let [counter, setCounter] = useState(props.initial);
@@ -19,7 +20,7 @@ function ItemCount(props) {
                 <p className="counter">{counter}</p>
                 <button className="counterBtn" disabled={counter >= props.max} onClick={increment}><i className="fas fa-plus" style={{ color: "rgb(30,30,30)" }} ></i></button>
             </div>
-            <button className="addToCartBtn" onClick={props.onAdd}><img className="cart" alt="cart" src={process.env.PUBLIC_URL + "/images/cart_dark.png"} aria-hidden="true" /></button>
+            <AddToCartButton />
         </div>
     );
 }

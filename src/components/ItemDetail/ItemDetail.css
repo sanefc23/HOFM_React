@@ -1,0 +1,124 @@
+.detail-child-frame1,
+.detail-child-frame2 {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+.detail-title {
+    font-weight: bold;
+}
+
+h5 {
+    font-weight: lighter;
+}
+
+.detail-tracklist {
+    margin-top: 2em;
+    list-style: none;
+    text-align: center;
+}
+
+.detail-tracklist li {
+    padding-bottom: 1em;
+}
+
+.detail-description {
+    padding-top: 1em;
+}
+
+.detail-row-mini-cards {
+    width: 88vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+}
+
+.detail-info-mini-cards,
+.detail-addToCartButton {
+    display: inline-flex;
+    color: rgb(30,30,30);
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255,255,255, 0.6);
+    border-radius: 5px;
+    width: 42vw;
+    height: 6vh;
+    border: none;
+    margin-bottom: 1vh;
+}
+
+.detail-album-cover {
+    width: 30vw;
+    margin-bottom: 1vh;
+}
+
+.fa-star {
+    margin: 0.1em;
+    color: rgb(30,30,30);
+}
+
+.detail-addToCart-icon {
+    width: 8vw;
+    margin-bottom: 0.2em;
+}
+
+.detail-info {
+    font-size: 5vw;
+    color: rgb(30,30,30);
+    display: flex;
+    margin: 0;
+}
+
+@media(min-width: 700px) {
+    .detail-child-frame1 {
+        width: 60%;
+    }
+
+    .detail-tracklist {
+        margin-top: 1em;
+        margin-left: 2em;
+    }
+
+    .detail-child-frame2 {
+        width: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .detail-info {
+        font-size: 1.5vw;
+    }
+
+    .detail-row-mini-cards {
+        width: 55vw;
+        padding-top: 1.4vh;
+        padding-bottom: 1.4vh;
+    }
+
+    .detail-info-mini-cards,
+    .detail-addToCartButton {
+        width: 13vw;
+        height: 8vh;
+        margin-bottom: 0;
+    }
+
+    .fa-star {
+        margin: 0.2em;
+    }
+
+    .detail-addToCart-icon {
+        width: 2.2vw;
+    }
+
+    .detail-album-cover {
+        width: 27vw;
+    }
+}
