@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './ItemDetail.css';
 import ItemCount from '../ItemCount/ItemCount';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 function ItemDetail(props) {
+
+    const [counter, setCounter] = useState(1);
+
+    function onChange(value) {
+        setCounter(value);
+        return counter;
+    }
     return (
         <div style={{ display: props.loading ? "flex" : "none" }}>
             <div className="detail-child-frame1">
@@ -29,11 +37,12 @@ function ItemDetail(props) {
                     </div>
                     <div id="addToCart" className="detail-info-mini-cards">
                         <ItemCount
-                            initial={1}
+                            initial={counter}
                             min={1}
                             max={10}
-                            onAdd={(count) => console.log('Añadido al carrito!')}
+                            onChange={onChange}
                         />
+                        <AddToCartButton counter={counter} />
                     </div>
                 </div>
                 <div className="detail-row-mini-cards">

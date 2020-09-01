@@ -1,3 +1,19 @@
+.inline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge{
+    margin: 0 0 1em .5em;
+    font-size: 1vw;
+    color: white;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    background-color: rgba(0, 190, 159, 0.85);
+}
+
 .linkLogo{
     height: 6vh;
     margin-right: 2em;

@@ -32,7 +32,7 @@ function CustomNavbar() {
                 <Nav>
                     <div className="rightGroup">
                         <Nav.Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Nav.Link>
-                        <CartIcon cartCounter={1}></CartIcon>
+                        <CartIcon cartCounter={10}></CartIcon>
                     </div>
                 </Nav>
             </Navbar.Collapse>

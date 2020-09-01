@@ -1,0 +1,6 @@
+button{
+    outline: none !important;
+    }
+button:focus{
+    outline: none !important;
+    }
