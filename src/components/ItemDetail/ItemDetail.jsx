@@ -39,7 +39,7 @@ function ItemDetail(props) {
                         <ItemCount
                             initial={counter}
                             min={1}
-                            max={10}
+                            max={9}
                             onChange={onChange}
                         />
                         <AddToCartButton counter={counter} />
