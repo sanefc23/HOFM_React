@@ -42,7 +42,7 @@ function ItemDetail(props) {
                             max={9}
                             onChange={onChange}
                         />
-                        <AddToCartButton counter={counter} />
+                        <AddToCartButton counter={counter} album={props.album} />
                     </div>
                 </div>
                 <div className="detail-row-mini-cards">

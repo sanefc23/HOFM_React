@@ -9,7 +9,7 @@ function getFromRemote() {
     return new Promise((res, rej) => {
         setTimeout(() => {
             res(albums)
-        }, 2000)
+        }, 1000)
     })
 }
 

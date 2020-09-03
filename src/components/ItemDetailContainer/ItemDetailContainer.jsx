@@ -10,7 +10,7 @@ const getAlbum = (id) => {
     return new Promise((res, rej) => {
         setTimeout(() => {
             res(product)
-        }, 3000)
+        }, 1000)
     });
 }
 
