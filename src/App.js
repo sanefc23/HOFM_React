@@ -9,10 +9,10 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/Footer/Footer';
 import { CartProvider, useCartContext } from './components/context/CartContext';
 
-
 function App() {
+  const { albums } = useCartContext();
   return (
-    <CartProvider>
+    <CartProvider value={albums}>
       <BrowserRouter>
         <CustomNavbar />
         <Switch>

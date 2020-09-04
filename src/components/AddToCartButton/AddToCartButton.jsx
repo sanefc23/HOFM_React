@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
 import './AddToCartButton.css';
-import { CartProvider, useCartContext } from '../context/CartContext';
+import { useCartContext } from '../context/CartContext';
 
 function AddToCartButton(props) {
-    const { albums, addAlbum, removeAlbum } = useCartContext();
+    const { addAlbum } = useCartContext();
 
     useEffect(() => {
-        console.log("Rendering CartContext");
+        console.log("receiving new album set");
     });
-
-    const newAlbum = { ...props.album };
 
     return (
         <div className="inline">
-            <button className="addToCartBtn" onClick={() => addAlbum({ newAlbum })}>
+            <button className="addToCartBtn" onClick={() => addAlbum(props.album)}>
                 <img className="cart" alt="cart" src={process.env.PUBLIC_URL + "/images/cart_dark.png"} aria-hidden="true" />
             </button>
             <h6 className="badge">{props.counter}</h6>

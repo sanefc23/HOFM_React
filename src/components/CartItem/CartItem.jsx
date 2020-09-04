@@ -14,7 +14,7 @@ function CartItem(props) {
                         <p className="containers-text darkFont" style={{ textTransform: "uppercase" }}>CD</p>
                     </div>
                     <div id="cart-units">
-                        <p className="containers-text darkFont">{props.album.amount}</p>
+                        <p className="containers-text darkFont">{props.album.units}</p>
                     </div>
                     <div id="cart-price">
                         <p className="containers-text darkFont">${props.album.price}.-</p>
