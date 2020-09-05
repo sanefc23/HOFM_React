@@ -4,7 +4,11 @@ import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../context/CartContext';
 
 function Cart() {
+
     const { albums } = useCartContext();
+
+    let acumulator = 0;
+    albums.map((album) => acumulator = acumulator + (album.price * album.units));
 
     useEffect(() => {
         console.log("receiving new album set" + albums);
@@ -19,7 +23,7 @@ function Cart() {
 
                 <div id="cart-total">
                     <hr />
-                    <h3 id="section">Total: $ 1299.-</h3>
+                    <h3 id="section">Total: $ {acumulator} .-</h3>
                 </div>
             </div>
 

@@ -1,5 +1,5 @@
-import React from 'react';
-//import { useState } from 'react';
+import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Nav from 'react-bootstrap/Nav';
@@ -8,20 +8,28 @@ import Button from 'react-bootstrap/Button';
 import FormControl from 'react-bootstrap/FormControl';
 import './CustomNavbar.css';
 import CartIcon from '../CartIcon/CartIcon';
+import { useCartContext } from '../context/CartContext';
 
 function CustomNavbar() {
+
+    const { albums } = useCartContext();
+
+    useEffect(() => {
+        console.log("receiving new album set");
+    }, [albums]);
+
     const genres = ['Pop', 'Rock', 'Latino', 'EDM', 'Música Clásica', 'Floklore', 'Hip Hop', 'Alternativo', 'Jazz', 'Metal', 'Reggae', 'Reggaeton', 'R&B', 'Rap']
     //const [cartCounter, setCartCounter] = useState(null);
     return (
-        <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark">
-            <Navbar.Brand href="/"><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo2.png"} /></Navbar.Brand>
+        <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark" >
+            <Link to={"/"}><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo2.png"} /></Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
+            <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="mr-auto">
-                    <Nav.Link className="links" href="/products/cd">CD</Nav.Link>
-                    <Nav.Link className="links" href="/products/dvd">DVD</Nav.Link>
-                    <Nav.Link className="links" href="/products/vinilos">Vinilos</Nav.Link>
-                    <NavDropdown className="links" title="Géneros" id="collasible-nav-dropdown">
+                    <Link className="links" to={"/products/cd"}>CD</Link>
+                    <Link className="links" to={"/products/dvd"}>DVD</Link>
+                    <Link className="links" to={"/products/vinilos"}>Vinilos</Link>
+                    <NavDropdown title="Géneros" id="collasible-nav-dropdown">
                         {genres.map((oneGenre, key) => <NavDropdown.Item key={key} href="#action/3.1">{oneGenre}</NavDropdown.Item>)}
                     </NavDropdown>
                     <Form inline>
@@ -31,8 +39,8 @@ function CustomNavbar() {
                 </Nav>
                 <Nav>
                     <div className="rightGroup">
-                        <Nav.Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Nav.Link>
-                        <CartIcon cartCounter={10}></CartIcon>
+                        <Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Link>
+                        <CartIcon cartCounter={albums.length}></CartIcon>
                     </div>
                 </Nav>
             </Navbar.Collapse>
