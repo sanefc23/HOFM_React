@@ -14,6 +14,9 @@ function CustomNavbar() {
 
     const { albums } = useCartContext();
 
+    let acumulator = 0;
+    albums.map((album) => acumulator = acumulator + album.units);
+
     useEffect(() => {
         console.log("receiving new album set");
     }, [albums]);
@@ -40,7 +43,7 @@ function CustomNavbar() {
                 <Nav>
                     <div className="rightGroup">
                         <Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Link>
-                        <CartIcon cartCounter={albums.length}></CartIcon>
+                        <CartIcon cartCounter={acumulator}></CartIcon>
                     </div>
                 </Nav>
             </Navbar.Collapse>
