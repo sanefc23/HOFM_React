@@ -6,6 +6,32 @@
     border-radius: 1em;
 }
 
+.emptyCart{
+    margin: 0 auto;
+    margin-top: 1em;
+    background-color: rgba(255,255,255, 0.6);
+    color: rgb(30,30,30);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50vw;
+    height: 30vw;
+}
+
+.goHomeBtn{
+    height: 8vh;
+    width: 18vw;
+    background-color: rgba(0, 190, 159, 0.85);
+    border-radius: 9vw;
+    border: none;
+    margin-top: 2em;
+    color: white;
+    letter-spacing: .08em;
+    font-size: 20px;
+}
+
 #section {
     display: flex;
     justify-content: center;
