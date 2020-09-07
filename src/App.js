@@ -18,7 +18,7 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home
-              greeting="Bienvenido a House of Music"
+              greeting="banner1.png"
             />
           </Route>
           <Route path="/products/:id">
