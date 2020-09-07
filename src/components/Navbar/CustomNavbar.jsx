@@ -42,7 +42,7 @@ function CustomNavbar() {
                 </Nav>
                 <Nav>
                     <div className="rightGroup">
-                        <Link href="/"><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Link>
+                        <Link to={"/"}><img className="altLinkLogo" alt="user" src={process.env.PUBLIC_URL + "/images/user.png"} aria-hidden="true" /></Link>
                         <CartIcon cartCounter={acumulator}></CartIcon>
                     </div>
                 </Nav>

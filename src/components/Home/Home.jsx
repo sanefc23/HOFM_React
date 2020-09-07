@@ -1,30 +1,27 @@
 import React, { useEffect, useState } from 'react';
+import { getFirestore } from '../../firebase';
 import './Home.css';
 import ItemList from '../ItemList/ItemList';
 import Spinner from '../Spinner/Spinner';
-import albums from '../albums';
-
-function getFromRemote() {
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res(albums)
-        }, 1000)
-    })
-}
 
 function Home(props) {
     const [albums, setAlbums] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    function hideSpinner() {
-        return setLoading(true);
-    }
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getFromRemote().then(setAlbums).then(hideSpinner);
-    }, []);
+        const db = getFirestore();
 
-    if (loading === false) {
+        const albumCollection = db.collection('albums');
+
+        albumCollection.get().then((querySnapshot) => {
+            setAlbums(querySnapshot.docs.map(doc => doc.data()));
+            console.log(albums);
+        }).catch((error) => console.log("Error getting albums from Firebase", error)).finally(() =>
+            setLoading(false)
+        );
+    }, [albums, loading]);
+
+    if (loading === true) {
         return (
             <div className="containerFrame">
                 <Spinner loading={loading} />
