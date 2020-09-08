@@ -1,0 +1,11 @@
+.catalogFrame{
+    display: flex;
+    flex-direction: column;
+    height: 81vh;
+}
+
+.mainText{
+    color: white;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}

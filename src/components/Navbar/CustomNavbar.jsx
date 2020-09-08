@@ -29,9 +29,9 @@ function CustomNavbar() {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="mr-auto">
-                    <Link className="links" to={"/products/cd"}>CD</Link>
-                    <Link className="links" to={"/products/dvd"}>DVD</Link>
-                    <Link className="links" to={"/products/vinilos"}>Vinilos</Link>
+                    <Link className="links" to={"/catalog/CD"}>CD</Link>
+                    <Link className="links" to={"/catalog/DVD"}>DVD</Link>
+                    <Link className="links" to={"/catalog/Vinilo"}>Vinilos</Link>
                     <NavDropdown title="Géneros" id="collasible-nav-dropdown">
                         {genres.map((oneGenre, key) => <NavDropdown.Item key={key} href="#action/3.1">{oneGenre}</NavDropdown.Item>)}
                     </NavDropdown>

@@ -4,13 +4,13 @@ import ItemCount from '../ItemCount/ItemCount';
 import AddToCartButton from '../AddToCartButton/AddToCartButton';
 
 function ItemDetail(props) {
-
     const [counter, setCounter] = useState(1);
 
     function onChange(value) {
         setCounter(value);
         return counter;
     }
+
     return (
         <div style={{ display: props.loading ? "flex" : "none" }}>
             <div className="detail-child-frame1">
@@ -54,15 +54,10 @@ function ItemDetail(props) {
             <div className="detail-child-frame2">
                 <ol className="detail-tracklist">
                     <h3 className="detail-title">Tracklist</h3>
-                    <br />
-                    <h5>No disponible</h5>
-                    {/* {
-    album.tracklist !== [] ?
-        album.tracklist.map(song => <li>{song}</li>) : 
-} */}
+                    {props.album.tracklist && props.album.tracklist.map((song, key) => <li key={key}>{song}</li>)}
                 </ol>
-            </div>
-        </ div>
+            </div >
+        </ div >
     );
 }
 

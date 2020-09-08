@@ -14,8 +14,7 @@ function Home(props) {
         const albumCollection = db.collection('albums');
 
         albumCollection.get().then((querySnapshot) => {
-            setAlbums(querySnapshot.docs.map(doc => doc.data()));
-            console.log(albums);
+            setAlbums(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
         }).catch((error) => console.log("Error getting albums from Firebase", error)).finally(() =>
             setLoading(false)
         );

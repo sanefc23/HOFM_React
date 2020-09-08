@@ -1,31 +1,30 @@
 import React, { useEffect, useState } from 'react';
+import { getFirestore } from '../../firebase';
 import './ItemDetailContainer.css';
 import { useParams } from 'react-router-dom';
 import Spinner from '../Spinner/Spinner';
-import albums from '../albums';
 import ItemDetail from '../ItemDetail/ItemDetail'
-
-const getAlbum = (id) => {
-    const product = albums.find(album => album.id === parseInt(id, 10));
-    return new Promise((res, rej) => {
-        setTimeout(() => {
-            res(product)
-        }, 1000)
-    });
-}
 
 function ItemDetailContainer() {
     const { id } = useParams();
     const [album, setAlbum] = useState({});
     const [loading, setLoading] = useState(false);
 
-    function hideSpinner() {
-        return setLoading(true);
-    }
-
     useEffect(() => {
-        getAlbum(id).then(setAlbum).then(hideSpinner);
-    }, [id]);
+        const db = getFirestore();
+
+        const albumCollection = db.collection('albums');
+        const currentAlbum = albumCollection.doc(id);
+
+        currentAlbum.get().then((doc) => {
+            setAlbum({
+                id: doc.id, ...doc.data()
+            });
+        }).catch((error) => {
+            console.log("Error, could not get item.", error);
+        }).finally(() =>
+            setLoading(true));
+    }, [id, album]);
 
     return (
         <>
