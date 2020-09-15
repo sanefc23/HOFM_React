@@ -7,8 +7,10 @@ import Home from './components/Home/Home';
 import Catalog from './components/Catalog/Catalog'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import Cart from './components/Cart/Cart';
+import CheckOut from './components/CheckOut/CheckOut';
 import Footer from './components/Footer/Footer';
 import { CartProvider, useCartContext } from './components/context/CartContext';
+
 
 function App() {
   const { albums } = useCartContext();
@@ -30,6 +32,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <Cart />
+          </Route>
+          <Route path="/checkout">
+            <CheckOut />
           </Route>
         </Switch>
         <Footer />

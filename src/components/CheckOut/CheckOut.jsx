@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import './Cart.css';
+import './CheckOut.css';
 import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../context/CartContext';
-import Popup from "reactjs-popup";
-// import 'reactjs-popup/dist/index.css';
 
-function Cart() {
+function CheckOut() {
 
     const { albums } = useCartContext();
 
@@ -20,6 +18,7 @@ function Cart() {
     if (albums.length > 0) {
         return (
             <div className="containerFrame">
+
                 <div className="cartFrame">
                     <h3 id="section">Tus productos</h3>
 
@@ -35,21 +34,11 @@ function Cart() {
                     <Link to={"/"}>
                         <button className="go-back" to={"/"}>Seguir Comprando</button>
                     </Link>
-                    <Popup style={{ backgroundColor: "none" }} trigger={<button className="buy">Confirmar Compra</button>} position="top left">
-                        <div className="popup">
-                            <h3>Primero confirmemos tus datos:</h3>
-                            <input className="textField" placeholder="Nombre"></input>
-                            <input className="textField" placeholder="Apellido"></input>
-                            <input className="textField" placeholder="Teléfono"></input>
-                            <input className="textField" placeholder="Email"></input>
-                            <input className="textField" placeholder="Confirmá tu email"></input>
-                            <Link to={"/checkout"}>
-                                <button className="purchaseBtn">¡Comprar!</button>
-                            </Link>
-                        </div>
-                    </Popup>
+                    <Link to={"/"}>
+                        <button className="buy">Confirmar Compra</button>
+                    </Link>
                 </div>
-            </div >
+            </div>
         );
     } else {
         return (
@@ -66,4 +55,7 @@ function Cart() {
     }
 }
 
-export default Cart;
+export default CheckOut;
+
+
+//{ buyer: { name, phone, email }, items: [{id, title, price, units}], total  }
