@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import './Cart.css';
 import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../context/CartContext';
-import Popup from "reactjs-popup";
-// import 'reactjs-popup/dist/index.css';
+import BuyPopup from '../BuyPopup/BuyPopup';
 
 function Cart() {
 
@@ -35,19 +34,7 @@ function Cart() {
                     <Link to={"/"}>
                         <button className="go-back" to={"/"}>Seguir Comprando</button>
                     </Link>
-                    <Popup style={{ backgroundColor: "none" }} trigger={<button className="buy">Confirmar Compra</button>} position="top left">
-                        <div className="popup">
-                            <h3>Primero confirmemos tus datos:</h3>
-                            <input className="textField" placeholder="Nombre"></input>
-                            <input className="textField" placeholder="Apellido"></input>
-                            <input className="textField" placeholder="Teléfono"></input>
-                            <input className="textField" placeholder="Email"></input>
-                            <input className="textField" placeholder="Confirmá tu email"></input>
-                            <Link to={"/checkout"}>
-                                <button className="purchaseBtn">¡Comprar!</button>
-                            </Link>
-                        </div>
-                    </Popup>
+                    <BuyPopup />
                 </div>
             </div >
         );
