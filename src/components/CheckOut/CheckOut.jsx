@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './CheckOut.css';
-import CartItem from '../CartItem/CartItem';
 import { useCartContext } from '../context/CartContext';
 import { useUserContext } from '../context/UserContext';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore'
+import { getFirestore } from '../../firebase';
 
 function CheckOut() {
 
@@ -13,14 +15,46 @@ function CheckOut() {
     let acumulator = 0;
     albums.map((album) => acumulator = acumulator + (album.price * album.units));
 
+    const db = getFirestore();
+    const orders = db.collection("orders");
+
+    async function createOrder() {
+        //{ buyer: { name, phone, email }, items: [{id, title, price, units}], total  }
+        const buyer = {
+            name: user.name,
+            lastName: user.lastName,
+            phone: user.phone,
+            email: user.email
+        }
+
+        const items = albums.map(album => ({ id: album.id, title: album.title, price: album.price, units: album.units }))
+
+        const order = {
+            buyer,
+            items,
+            date: firebase.firestore.Timestamp.fromDate(new Date()),
+            total: acumulator
+        }
+
+        orders.add(order).then(({ id }) => {
+            console.log("Order added.")
+            alert("¡Tu orden fue creada exitosamente!");
+        }).catch(e => {
+            console.log(e);
+        }).finally(() => {
+            console.log("Done.");
+        })
+    }
+
+
     useEffect(() => {
-        console.log("receiving new album set" + albums);
-    }, [albums]);
+        console.log("receiving new album set", albums, user);
+    }, [albums, user]);
 
     return (
         <div className="containerFrame">
             <div className="checkOutFrame">
-                <h3 id="section">Tu comprobante:</h3>
+                <h3 id="section">Detalle de tu compra:</h3>
 
                 <div className="checkOutUser">
                     <h5>Nombre Completo: {user.name} {user.lastName}</h5>
@@ -45,7 +79,7 @@ function CheckOut() {
 
             <div className="action-buttons">
                 <Link to={"/"}>
-                    <button className="finishBtn" to={"/"}>Finalizar</button>
+                    <button className="finishBtn" onClick={createOrder}>Finalizar</button>
                 </Link>
             </div>
         </div>
@@ -53,6 +87,3 @@ function CheckOut() {
 }
 
 export default CheckOut;
-
-
-//{ buyer: { name, phone, email }, items: [{id, title, price, units}], total  }
