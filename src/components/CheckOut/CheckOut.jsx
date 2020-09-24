@@ -37,18 +37,15 @@ function CheckOut() {
         }
 
         orders.add(order).then(({ id }) => {
-            console.log("Order added.")
             alert("¡Tu orden fue creada exitosamente!");
         }).catch(e => {
             console.log(e);
-        }).finally(() => {
-            console.log("Done.");
         })
     }
 
 
     useEffect(() => {
-        console.log("receiving new album set", albums, user);
+        console.log("CHECKOUT", albums, user);
     }, [albums, user]);
 
     return (

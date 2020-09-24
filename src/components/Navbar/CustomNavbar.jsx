@@ -9,20 +9,27 @@ import FormControl from 'react-bootstrap/FormControl';
 import './CustomNavbar.css';
 import CartIcon from '../CartIcon/CartIcon';
 import { useCartContext } from '../context/CartContext';
+import { getFirestore } from '../../firebase';
+import { useState } from 'react';
 
 function CustomNavbar() {
 
     const { albums } = useCartContext();
+    const [genres, setGenres] = useState([]);
 
     let acumulator = 0;
     albums.map((album) => acumulator = acumulator + album.units);
 
     useEffect(() => {
-        console.log("receiving new album set");
-    }, [albums]);
+        const db = getFirestore();
 
-    const genres = ['Pop', 'Rock', 'Latino', 'EDM', 'Música Clásica', 'Floklore', 'Hip Hop', 'Alternativo', 'Jazz', 'Metal', 'Reggae', 'Reggaeton', 'R&B', 'Rap']
-    //const [cartCounter, setCartCounter] = useState(null);
+        const genresCollection = db.collection('genres');
+
+        genresCollection.get().then((querySnapshot) => {
+            setGenres(querySnapshot.docs.map(doc => ({ ...doc.data() })));
+        }).catch((error) => console.log("Error getting albums from Firebase", error));
+    }, [albums, genres]);
+
     return (
         <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark" >
             <Link to={"/"}><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo2.png"} /></Link>
@@ -33,7 +40,15 @@ function CustomNavbar() {
                     <Link className="links" to={"/catalog/DVD"}>DVD</Link>
                     <Link className="links" to={"/catalog/Vinilo"}>Vinilos</Link>
                     <NavDropdown title="Géneros" id="collasible-nav-dropdown">
-                        {genres.map((oneGenre, key) => <NavDropdown.Item key={key} href="#action/3.1">{oneGenre}</NavDropdown.Item>)}
+                        {genres.map((oneGenre, index) =>
+                            <div key={index}>
+                                <Link className="dropdownLinks" to={`/genre/${index + 1}`}>
+                                    <button style={{ border: "none", backgroundColor: "transparent", width: "10vw", margin: ".5em" }}>
+                                        {oneGenre.value}
+                                    </button>
+                                </Link>
+                            </div>
+                        )}
                     </NavDropdown>
                     <Form inline>
                         <FormControl type="text" placeholder="Buscar album..." className="mr-sm-2" />

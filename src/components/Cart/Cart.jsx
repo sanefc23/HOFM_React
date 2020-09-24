@@ -13,7 +13,7 @@ function Cart() {
     albums.map((album) => acumulator = acumulator + (album.price * album.units));
 
     useEffect(() => {
-        console.log("receiving new album set" + albums);
+        return console.log("receiving new album set" + albums);
     }, [albums]);
 
     if (albums.length > 0) {

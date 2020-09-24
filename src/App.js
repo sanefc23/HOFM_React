@@ -33,6 +33,9 @@ function App() {
             <Route path="/catalog/:format">
               <Catalog />
             </Route>
+            <Route path="/genre/:genre">
+              <Catalog />
+            </Route>
             <Route path="/cart">
               <Cart />
             </Route>

@@ -13,6 +13,12 @@
     color: white !important;
 }
 
+.dropdownLinks{
+    margin: 1em;
+    width: 3vw;
+    color: black;
+}
+
 .rightGroup{
     display: inline-flex;
     justify-content: center;
