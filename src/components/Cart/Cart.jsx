@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './Cart.css';
 import CartItem from '../CartItem/CartItem';
@@ -11,10 +11,6 @@ function Cart() {
 
     let acumulator = 0;
     albums.map((album) => acumulator = acumulator + (album.price * album.units));
-
-    useEffect(() => {
-        return console.log("receiving new album set" + albums);
-    }, [albums]);
 
     if (albums.length > 0) {
         return (

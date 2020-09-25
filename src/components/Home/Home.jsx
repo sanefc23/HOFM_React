@@ -18,9 +18,9 @@ function Home(props) {
         }).catch((error) => console.log("Error getting albums from Firebase", error)).finally(() =>
             setLoading(false)
         );
-    }, [albums, loading]);
+    }, []);
 
-    if (loading === true) {
+    if (loading) {
         return (
             <div className="containerFrame">
                 <Spinner loading={loading} />

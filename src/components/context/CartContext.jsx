@@ -24,7 +24,11 @@ export function CartProvider({ initialValue = [], children }) {
         setAlbums(a);
     }
 
-    return <CartContext.Provider value={{ albums, addAlbum, removeAlbum }}>
+    function clearCart() {
+        setAlbums([]);
+    }
+
+    return <CartContext.Provider value={{ albums, addAlbum, removeAlbum, clearCart }}>
         {children}
     </CartContext.Provider>
 }

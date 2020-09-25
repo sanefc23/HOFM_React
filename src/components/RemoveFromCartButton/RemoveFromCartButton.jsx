@@ -1,13 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useCartContext } from '../context/CartContext';
 import './RemoveFromCartButton.css';
 
 function RemoveFromCartButton(props) {
     const { removeAlbum } = useCartContext();
-
-    useEffect(() => {
-        console.log("receiving new album set");
-    });
 
     return (
         <button style={{ backgroundColor: 'transparent', border: 'none' }} onClick={() => removeAlbum(props.album)}>

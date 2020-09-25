@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './CheckOut.css';
 import { useCartContext } from '../context/CartContext';
@@ -9,7 +9,7 @@ import { getFirestore } from '../../firebase';
 
 function CheckOut() {
 
-    const { albums } = useCartContext();
+    const { albums, clearCart } = useCartContext();
     const { user } = useUserContext();
 
     let acumulator = 0;
@@ -19,7 +19,6 @@ function CheckOut() {
     const orders = db.collection("orders");
 
     async function createOrder() {
-        //{ buyer: { name, phone, email }, items: [{id, title, price, units}], total  }
         const buyer = {
             name: user.name,
             lastName: user.lastName,
@@ -37,16 +36,11 @@ function CheckOut() {
         }
 
         orders.add(order).then(({ id }) => {
-            alert("¡Tu orden fue creada exitosamente!");
+            alert(`¡Tu orden N° ${id} fue creada exitosamente!`);
         }).catch(e => {
             console.log(e);
-        })
+        }).finally(clearCart);
     }
-
-
-    useEffect(() => {
-        console.log("CHECKOUT", albums, user);
-    }, [albums, user]);
 
     return (
         <div className="containerFrame">

@@ -6,7 +6,7 @@ function AddToCartButton(props) {
     const { albums, addAlbum } = useCartContext();
 
     useEffect(() => {
-        console.log("receiving new album set");
+        console.log("Receiving albums");
     }, [albums]);
 
     const newAlbum = { ...props.album, units: props.counter };

@@ -11,26 +11,28 @@ function ItemDetailContainer() {
     const [notFound, setNotFound] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    const db = getFirestore();
+
+    const albumCollection = db.collection('albums');
+    const currentAlbum = albumCollection.doc(id);
+
     useEffect(() => {
-        const db = getFirestore();
-
-        const albumCollection = db.collection('albums');
-        const currentAlbum = albumCollection.doc(id);
-
-        currentAlbum.get().then((doc) => {
-            if (doc.exists) {
-                setNotFound(false);
-                setAlbum({
-                    id: doc.id, ...doc.data()
-                });
-            } else {
-                setNotFound(true);
-            }
-        }).catch((error) => {
-            console.log("Error, could not get item.", error);
-        }).finally(() =>
-            setLoading(true));
-    }, [id, album]);
+        if (!loading) {
+            currentAlbum.get().then((doc) => {
+                if (doc.exists) {
+                    setNotFound(false);
+                    setAlbum({
+                        id: doc.id, ...doc.data()
+                    });
+                } else {
+                    setNotFound(true);
+                }
+            }).catch((error) => {
+                console.log("Error, could not get item.", error);
+            }).finally(() =>
+                setLoading(true));
+        }
+    }, [loading, currentAlbum]);
 
     if (!notFound) {
         return (<>

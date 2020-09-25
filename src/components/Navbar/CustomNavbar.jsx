@@ -28,7 +28,7 @@ function CustomNavbar() {
         genresCollection.get().then((querySnapshot) => {
             setGenres(querySnapshot.docs.map(doc => ({ ...doc.data() })));
         }).catch((error) => console.log("Error getting albums from Firebase", error));
-    }, [albums, genres]);
+    }, []);
 
     return (
         <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark" >

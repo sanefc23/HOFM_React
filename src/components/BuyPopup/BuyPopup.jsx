@@ -10,9 +10,6 @@ function useTextInput() {
     function onInput(evt) {
         setInput(evt.target.value);
     };
-    // function inputHandler(evt) {
-    //     this.setState(evt.target.value);
-    // }
 
     return {
         onInput,
@@ -29,7 +26,7 @@ function BuyPopup() {
     const [confirmEmail, setConfirmEmail] = useState('');
 
     useEffect(() => {
-        console.log("Cargando datos de usuario");
+        console.log("USE EFFECT BUY POPUP");
     }, [name, lastName, phone, email, confirmEmail]);
 
     const nameInput = useTextInput();
