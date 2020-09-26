@@ -25,15 +25,23 @@ function BuyPopup() {
     const [email, setEmail] = useState('');
     const [confirmEmail, setConfirmEmail] = useState('');
 
-    useEffect(() => {
-        console.log("USE EFFECT BUY POPUP");
-    }, [name, lastName, phone, email, confirmEmail]);
-
     const nameInput = useTextInput();
     const lastNameInput = useTextInput();
     const phoneInput = useTextInput();
     const emailInput = useTextInput();
     const confirmEmailInput = useTextInput();
+
+    const isValid = nameInput.value.length > 0 &&
+        lastNameInput.value.length > 0 &&
+        phoneInput.value.length > 0 &&
+        emailInput.value.length > 0 &&
+        confirmEmailInput.value.length > 0 &&
+        emailInput.value === confirmEmailInput.value;
+
+
+    useEffect(() => {
+        console.log("USE EFFECT BUY POPUP");
+    }, [name, lastName, phone, email, confirmEmail, isValid]);
 
     return (
         <Popup style={{ backgroundColor: "none" }} trigger={<button className="buy">Confirmar Compra</button>} position="top left">
@@ -45,7 +53,7 @@ function BuyPopup() {
                 <input className="textField" type="email" {...emailInput} onChange={() => setEmail(emailInput.value)} name='email' placeholder="Email"></input>
                 <input className="textField" type="email" {...confirmEmailInput} onChange={() => setConfirmEmail(confirmEmailInput.value)} name='confirmEmail' placeholder="Confirmá tu email"></input>
                 <Link to={"/checkout"}>
-                    <button disabled={emailInput.value !== confirmEmailInput.value ? true : false} className="purchaseBtn" onClick={() => saveUser(
+                    <button disabled={!isValid} className="purchaseBtn" onClick={() => saveUser(
                         {
                             name: nameInput.value,
                             lastName: lastNameInput.value,
@@ -55,7 +63,7 @@ function BuyPopup() {
                     )}>¡Comprar!</button>
                 </Link>
             </div>
-        </Popup>
+        </Popup >
     );
 }
 
