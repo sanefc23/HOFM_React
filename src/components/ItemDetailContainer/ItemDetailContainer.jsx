@@ -12,27 +12,31 @@ function ItemDetailContainer() {
     const [loading, setLoading] = useState(false);
 
     const db = getFirestore();
-
     const albumCollection = db.collection('albums');
     const currentAlbum = albumCollection.doc(id);
+    const genresCollection = db.collection('genres');
+
 
     useEffect(() => {
-        if (!loading) {
-            currentAlbum.get().then((doc) => {
-                if (doc.exists) {
-                    setNotFound(false);
-                    setAlbum({
-                        id: doc.id, ...doc.data()
-                    });
-                } else {
-                    setNotFound(true);
-                }
-            }).catch((error) => {
-                console.log("Error, could not get item.", error);
-            }).finally(() =>
-                setLoading(true));
-        }
-    }, [loading, currentAlbum]);
+        genresCollection.get().then((querySnapshot) => {
+            const genres = querySnapshot.docs.map(doc => ({ ...doc.data() }));
+            if (!loading) {
+                currentAlbum.get().then((doc) => {
+                    if (doc.exists) {
+                        setNotFound(false);
+                        setAlbum({
+                            id: doc.id, ...doc.data(), genre: genres[doc.data().genre - 1].value
+                        });
+                    } else {
+                        setNotFound(true);
+                    }
+                }).catch((error) => {
+                    console.log("Error, could not get item.", error);
+                }).finally(() =>
+                    setLoading(true));
+            }
+        });
+    }, [loading, currentAlbum, genresCollection]);
 
     if (!notFound) {
         return (<>

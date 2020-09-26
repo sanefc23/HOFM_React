@@ -16,7 +16,6 @@ function CustomNavbar() {
 
     const { albums } = useCartContext();
     const [genres, setGenres] = useState([]);
-
     let acumulator = 0;
     albums.map((album) => acumulator = acumulator + album.units);
 
@@ -43,7 +42,7 @@ function CustomNavbar() {
                         {genres.map((oneGenre, index) =>
                             <div key={index}>
                                 <Link className="dropdownLinks" to={`/genre/${index + 1}`}>
-                                    <button style={{ border: "none", backgroundColor: "transparent", width: "10vw", margin: ".5em" }}>
+                                    <button style={{ border: "none", backgroundColor: "transparent", width: "10vw", margin: ".5em" }} >
                                         {oneGenre.value}
                                     </button>
                                 </Link>

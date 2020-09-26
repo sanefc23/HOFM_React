@@ -5,11 +5,11 @@ import './Catalog.css';
 import ItemList from '../ItemList/ItemList';
 import Spinner from '../Spinner/Spinner';
 
+
 function Catalog(props) {
-    const { format = undefined } = useParams();
+    const { format } = useParams();
     const { genre = undefined } = useParams();
     const [albums, setAlbums] = useState([]);
-    const [genres, setGenres] = useState([]);
     const [headerMessage, setMessage] = useState('');
     const [loading, setLoading] = useState(true);
 
@@ -18,32 +18,32 @@ function Catalog(props) {
         const albumCollection = db.collection('albums');
         const genresCollection = db.collection('genres');
 
-        if (loading) {
-            genresCollection.get().then((querySnapshot) => {
-                setGenres(querySnapshot.docs.map(doc => ({ ...doc.data() })));
-            }).catch((error) => console.log("Error getting genres from Firebase", error));
+        if (format === undefined) {
+            //Search by genre
+            const byGenreAlbums = albumCollection.where('genre', '==', genre);
 
-            if (format === undefined) {
-                //Search by genre
-                const byGenreAlbums = albumCollection.where('genre', '==', genre);
+            genresCollection.get().then((querySnapshot) => {
+                const genres = querySnapshot.docs.map(doc => ({ ...doc.data() }));
                 byGenreAlbums.get().then((querySnapshot) => {
-                    setMessage(`Encontramos estos albums de género ${genres[genre - 1]}`);
+                    setMessage(`Encontramos estos albums de género ${genres[genre - 1].value}`);
                     setAlbums(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-                }).catch((error) => console.log("Error getting albums from Firebase", error)).finally(() =>
-                    setLoading(false)
-                );
-            } else {
-                //Search by format
-                const byFormatAlbums = albumCollection.where('format', '==', format);
-                byFormatAlbums.get().then((querySnapshot) => {
-                    setMessage(`Encontramos estos ${format.toUppercase}S`);
-                    setAlbums(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
-                }).catch((error) => console.log("Error getting albums from Firebase", error)).finally(() =>
-                    setLoading(false)
-                );
-            }
+                }).catch((error) => console.log("Error getting albums from Firebase", error))
+            }).catch((error) => console.log("Error getting genres from Firebase", error)).finally(() => {
+                setLoading(false)
+            });
+
+        } else {
+            //Search by format
+            const byFormatAlbums = albumCollection.where('format', '==', format);
+            byFormatAlbums.get().then((querySnapshot) => {
+                setMessage(`Encontramos estos ${format}s`);
+                setAlbums(querySnapshot.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+            }).catch((error) => console.log("Error getting albums from Firebase", error))
+                .finally(() => {
+                    setLoading(false);
+                });
         }
-    }, [format, genre, genres, albums, loading]);
+    }, [format, genre]);
 
     if (loading === true) {
         return (
