@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 import './CartIcon.css';
 
 function CartIcon(props) {
-    // const [onCartCounter, setOnCartCounter] = useState(0);
-
     return (
         <>
             <div className="cartCounterBadge">

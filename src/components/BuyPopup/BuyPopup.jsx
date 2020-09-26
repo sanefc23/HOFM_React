@@ -40,7 +40,7 @@ function BuyPopup() {
 
 
     useEffect(() => {
-        console.log("USE EFFECT BUY POPUP");
+        console.log("BUY POPUP");
     }, [name, lastName, phone, email, confirmEmail, isValid]);
 
     return (
