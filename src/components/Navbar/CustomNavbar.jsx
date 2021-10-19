@@ -31,7 +31,7 @@ function CustomNavbar() {
 
     return (
         <Navbar collapseOnSelect expand="lg" className="navBkg" bg="dark" variant="dark" >
-            <Link to={"/"}><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo2.png"} /></Link>
+            <Link to={"/"}><img className="logo" alt="brand" src={process.env.PUBLIC_URL + "/images/logo.png"} /></Link>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav" >
                 <Nav className="mr-auto">

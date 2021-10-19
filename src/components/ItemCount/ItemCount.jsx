@@ -24,3 +24,9 @@ function ItemCount(props) {
 }
 
 export default ItemCount;
+
+var contador = 1;
+
+function incrementar(){
+contador++;
+}

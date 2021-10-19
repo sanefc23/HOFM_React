@@ -6,7 +6,7 @@ import ItemList from '../ItemList/ItemList';
 import Spinner from '../Spinner/Spinner';
 
 
-function Catalog(props) {
+function    Catalog(props) {
     const { format } = useParams();
     const { genre = undefined } = useParams();
     const [albums, setAlbums] = useState([]);
